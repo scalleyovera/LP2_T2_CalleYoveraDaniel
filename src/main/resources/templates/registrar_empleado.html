@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Empleado</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Registro de Empleado</h2>
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <span th:text="${errorMessage}"></span>
+    </div>
+    <form th:action="@{/registrar_empleado}" th:object="${user}" method="post">
+        <div class="form-group">
+            <label for="area">Id area:</label>
+            <input type="text" class="form-control" id="area" th:field="*{area.AreaId}" placeholder="Ingrese el id del area" required>
+        </div>
+        <div class="form-group">
+            <label for="Dni">Correo Dni:</label>
+            <input type="text" class="form-control" id="dni" th:field="*{dniEmpleado}" placeholder="Ingrese el dni" required>
+        </div>
+        <div class="form-group">
+            <label for="date">Fecha de nacimiento:</label>
+            <input type="date" class="form-control" id="date" th:field="*{fecNac}" placeholder="Ingrese su fecha de nacimiento" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" th:field="*{apellidoEmpleado}" placeholder="Ingrese el apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="correo">Fecha de nacimiento:</label>
+            <input type="email" class="form-control" id="correo" th:field="*{correo}" placeholder="Ingrese el email" required>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Direccion:</label>
+            <input type="text" class="form-control" id="direccion" th:field="*{direccion}" placeholder="Ingrese la direccion" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre del empleado:</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombreEmpleado}" placeholder="Ingrese el nombre" required>
+        </div>
+        <a th:href="@{/}" class="btn btn-secondary">Regresar</a>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+</body>
+</html>

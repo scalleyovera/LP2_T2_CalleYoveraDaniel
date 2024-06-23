@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -28,7 +29,7 @@ public class EmpleadoEntity {
     private String apellidoEmpleado;
 
     @Column(name = "fecha_nacimiento", nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecNac;
 
     @Column(name = "direccion" , nullable = false)
