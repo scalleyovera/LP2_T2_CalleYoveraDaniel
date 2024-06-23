@@ -20,7 +20,7 @@ public class EmpleadoEntity {
     @Id
     @Column(name = "dni_empleado", nullable = false,
             columnDefinition = "CHAR(8)", length = 8, unique = true)
-    private String dniEmpleado;
+    private int dniEmpleado;
 
     @Column(name = "nombre_empleado" , nullable = false)
     private String nombreEmpleado;

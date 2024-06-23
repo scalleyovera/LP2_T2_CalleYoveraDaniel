@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.*;
@@ -31,10 +32,29 @@ public class EmpleadoController {
 
     @PostMapping("/registrar_empleado")
     public String registrarEmpleado(@ModelAttribute EmpleadoEntity user, Model model){
+        if(er.findByDniEmpleado(user.getDniEmpleado()) != null){
+            model.addAttribute("errorMessage", "Empleado ya existe");
+            model.addAttribute("user", new EmpleadoEntity());
+            return "registrar_empleado";
+        }
+
         er.save(user);
         return "redirect:/";
     }
 
-    
+
+    @GetMapping("/detalle_empleado/{id}")
+    public String verEmpleado(Model model, @PathVariable("id")Integer id){
+        EmpleadoEntity empEncontrado = er.findById(id).get();
+        model.addAttribute("user", empEncontrado);
+
+        return "detalle_empleado";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String eliminarEmpleado( @PathVariable("id")Integer id){
+        er.deleteById(id);
+        return "redirect:/";
+    }
 
 }
