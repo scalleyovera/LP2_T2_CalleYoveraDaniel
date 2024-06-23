@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TemporalApplication {
+public class Lp2T2CalleYoveraDaniel {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TemporalApplication.class, args);
+		SpringApplication.run(Lp2T2CalleYoveraDaniel.class, args);
 	}
+
+
 
 }
